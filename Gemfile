@@ -7,6 +7,6 @@ gem 'gollum'
 gem 'thor'
 gem 'bcrypt'
 gem "sinatra-activerecord"
-gem 'pg'
+gem 'sqlite3'
 gem 'rake'
 gem 'activerecord'

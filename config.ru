@@ -3,7 +3,7 @@
 require 'gollum/app'
 require 'tilt/erb'
 require 'active_record'
-require 'pg'
+require 'sqlite3'
 
 date_config = YAML.load(File.read('config/database.yml'))
 ActiveRecord::Base.configurations["development"] = date_config["development"]
