@@ -23,10 +23,8 @@ Precious::App.set(:wiki_options, wiki_config["wiki_options"])
 Precious::App.set(:logging, wiki_config["logging"])
 
 class Wuki < Sinatra::Base
-  use Rack::Session::Cookie, :key => 'rack.session',
-                             :path => '/',
-                             :expire_after => 1 * 24 * 60 * 60,
-                             :secret => SecureRandom.hex(128)
+  use Rack::Session::Pool, :expire_after => 1 * 24 * 60 * 60,
+                           :secret => SecureRandom.hex(64)
 
   before do
     pass if request.path_info.split('/')[1] == 'auth'
