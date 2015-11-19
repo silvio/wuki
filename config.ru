@@ -38,7 +38,6 @@ class Wuki < Sinatra::Base
   end
 
   post '/auth/login' do
-    puts params
     if user = User.find_by(email: params['email']) and user.has_password?(params['password'])
       session['user'] = user
       redirect '/'
