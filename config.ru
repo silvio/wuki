@@ -12,8 +12,6 @@ ActiveRecord::Base.configurations["production"] = date_config["production"]
 ActiveRecord::Base.configurations["test"] = date_config["test"]
 ActiveRecord::Base.establish_connection ENV["RACK_ENV"].to_sym
 
-puts ActiveRecord::Base.configurations
-
 require "./model/user.rb"
 
 wiki_config = YAML.load(File.read('gollum_wiki.yml'))
