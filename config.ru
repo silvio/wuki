@@ -29,6 +29,7 @@ class Wuki < Sinatra::Base
   before do
     pass if request.path_info.split('/')[1] == 'auth'
     if !session['user']
+      session[:path] = request.path() if session[:path].nil?()
       redirect '/auth/login'
     end
   end
@@ -40,7 +41,9 @@ class Wuki < Sinatra::Base
   post '/auth/login' do
     if user = User.find_by(email: params['email']) and user.has_password?(params['password'])
       session['user'] = user
-      redirect '/'
+      dest = session[:path].length > 1 ? session[:path] : '/'
+      session.delete(:path)
+      redirect dest
     else
       redirect '/auth/login'
     end
