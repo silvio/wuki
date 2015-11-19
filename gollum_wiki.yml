@@ -2,6 +2,8 @@
 wiki_path: .
 wiki_repo: wiki.git
 
+logging: true
+
 default_markup: :markdown
 
 wiki_options:

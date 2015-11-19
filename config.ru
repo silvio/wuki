@@ -20,12 +20,14 @@ wiki_config = YAML.load(File.read('gollum_wiki.yml'))
 Precious::App.set(:gollum_path, wiki_config["wiki_path"] + '/' + wiki_config["wiki_repo"])
 Precious::App.set(:default_markup, wiki_config["default_markup"]) # set your favorite markup language
 Precious::App.set(:wiki_options, wiki_config["wiki_options"])
+Precious::App.set(:logging, wiki_config["logging"])
 
 class Wuki < Sinatra::Base
   use Rack::Session::Cookie, :key => 'rack.session',
                              :path => '/',
                              :expire_after => 1 * 24 * 60 * 60,
                              :secret => SecureRandom.hex(128)
+
   before do
     pass if request.path_info.split('/')[1] == 'auth'
     if !session['user']
