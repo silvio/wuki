@@ -25,34 +25,34 @@ class Wuki < Sinatra::Base
                            :secret => SecureRandom.hex(64)
 
   before do
-    pass if request.path_info.split('/')[1] == 'auth'
+    pass if request.path_info.split('/')[2] == 'auth'
     if !session['user']
       session[:path] = request.path() if session[:path].nil?()
-      redirect '/auth/login'
+      redirect '/_wuki/auth/login'
     end
   end
 
-  get '/auth/login' do
+  get '/_wuki/auth/login' do
     erb :login
   end
 
-  post '/auth/login' do
+  post '/_wuki/auth/login' do
     if user = User.find_by(email: params['email']) and user.has_password?(params['password'])
       session['user'] = user
       dest = session[:path].length > 1 ? session[:path] : '/'
       session.delete(:path)
       redirect dest
     else
-      redirect '/auth/login'
+      redirect '/_wuki/auth/login'
     end
   end
 
-  delete '/auth/logout' do
+  delete '/_wuki/auth/logout' do
     session['user'] = nil
     redirect '/'
   end
 
-  get '/auth/logout' do
+  get '/_wuki/auth/logout' do
     session['user'] = nil
     redirect '/'
   end
