@@ -7,6 +7,7 @@ gem 'gollum'
 gem 'thor'
 gem 'bcrypt'
 gem "sinatra-activerecord"
+gem 'bigdecimal'
 gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'sqlite3'
 gem 'rake'
