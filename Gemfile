@@ -9,4 +9,4 @@ gem 'bcrypt'
 gem "sinatra-activerecord"
 gem 'sqlite3'
 gem 'rake'
-gem 'activerecord'
+gem 'activerecord', '4.2.6'
