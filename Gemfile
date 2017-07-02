@@ -4,7 +4,7 @@ gem 'puma'
 gem 'gollum'
 
 # authen
-gem 'activerecord', '4.2.6'
+gem 'activerecord', '5.1.2'
 gem 'bcrypt'
 gem 'bigdecimal'
 gem 'github-markdown'
